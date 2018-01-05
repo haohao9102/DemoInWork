@@ -46,11 +46,12 @@ public class HuaLangActivity extends BaseActivity {
             View view = LayoutInflater.from(this).inflate(R.layout.hualang_item_viewpager_layout, null);
             viewlist.add(view);
         }
-
-        mScreenWidth = getResources().getDisplayMetrics().widthPixels;//屏幕宽度
-
-        mViewPager.setOffscreenPageLimit(8);//设置缓存数量
-        mViewPager.setPageMargin(15);//设置间距
+        //屏幕宽度
+        mScreenWidth = getResources().getDisplayMetrics().widthPixels;
+        //设置缓存数量
+        mViewPager.setOffscreenPageLimit(8);
+        //设置间距
+        mViewPager.setPageMargin(15);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 mScreenWidth / 5, ViewPager.LayoutParams.WRAP_CONTENT);
         mViewPager.setLayoutParams(params);
@@ -77,6 +78,7 @@ public class HuaLangActivity extends BaseActivity {
             }
         });
 
+        //监听每个页面的点击，将事件分发给viewpager
         ll.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -110,12 +112,16 @@ public class HuaLangActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 切换动画
+     */
     class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.9f;
         private static final float MIN_ALPHA = 0.5f;
 
         private float defaultScale = 0.9f;
 
+        @Override
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();
             int pageHeight = view.getHeight();

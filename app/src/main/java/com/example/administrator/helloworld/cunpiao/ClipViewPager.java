@@ -9,6 +9,7 @@ import android.view.View;
 /**
  * Created by Administrator on 2017/6/14.
  * 点击滑动的viewpager
+ * @author
  */
 
 public class ClipViewPager extends ViewPager {
