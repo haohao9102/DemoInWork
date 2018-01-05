@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ssdk_oks_share" translatable="false">分享</string>
+    <string name="ssdk_oks_sharing" translatable="false">分享操作正在后台进行…</string>
+    <string name="ssdk_oks_share_failed" translatable="false">分享失败</string>
+    <string name="ssdk_oks_share_completed" translatable="false">分享成功</string>
+    <string name="ssdk_oks_share_canceled" translatable="false">分享已取消</string>
+    <string name="ssdk_oks_cancel" translatable="false">取消</string>
+    <string name="ssdk_oks_multi_share" translatable="false">图文分享</string>
+    <string name="ssdk_oks_confirm" translatable="false">确定</string>
+    <string name="ssdk_oks_contacts" translatable="false">联系人</string>
+    <string name="ssdk_oks_pull_to_refresh" translatable="false">下拉刷新</string>
+	<string name="ssdk_oks_release_to_refresh" translatable="false">松开刷新</string>
+	<string name="ssdk_oks_refreshing" translatable="false">刷新中…</string>
+</resources>

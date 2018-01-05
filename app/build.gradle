@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        realse {
+            keyAlias 'helloworld'
+            keyPassword '123456'
+            storePassword '123456'
+            storeFile file('E:/project/HelloWorld/helloworld.jks')
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    android {
+        sourceSets {
+            main.jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.example.administrator.helloworld"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 2
+        versionName "1.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //recyclerView 万能适配器
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.qdxxxx:BezierViewPager:v1.0.2'
+    compile 'com.zhy:base-rvadapter:3.0.3'
+    compile files('libs/ormlite-android-5.0.jar')
+    compile files('libs/MobCommons-2017.0322.0931.jar')
+    compile files('libs/ShareSDK-QQ-2.8.2.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile project(':libzxing')
+
+    //刮刮卡效果
+    compile 'com.github.cooltechworks:ScratchView:v1.0'
+    //banner效果
+    compile 'com.youth.banner:banner:1.4.9'
+    //工具类库
+    compile 'com.github.AllenCoder.SuperUtils:apputils:1.0.4'
+    //overviewstack
+    //标签控件
+    compile project(':mr_chenlibrary')
+    //android 6.0权限
+    compile 'me.weyye.hipermission:library:1.0.3'
+    //安卓选择器类库，包括日期及时间选择器（可设置范围）、单项选择器（可用于性别、职业、学历、星座等）、城市地址选择器（分省级、地级及县级）、数字选择器（可用于年龄、身高、体重、温度等）等……可以切换不同的模式（目前有普通模式，3d滚轮模式）
+    compile 'com.github.addappcn:android-pickers:1.0.0'
+    compile 'com.github.donkingliang:LabelsView:1.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    testCompile 'junit:junit:4.12'
+    //Xsnow基于RxJava2+Retrofit2精心打造的Android基础框架，包含网络、上传、下载、缓存、事件总线、权限管理、数据库、图片加载、UI模块，基本都是项目中必用功能，每个模块充分解耦，可自由拓展。
+    // compile 'com.vise.xiaoyaoyou:xsnow:2.1.0'
+}
+repositories {
+    mavenCentral()
+}

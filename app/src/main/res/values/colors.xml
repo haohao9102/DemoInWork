@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#fff</color>
+    <color name="key_ok_color_pressed">#ff5963</color>
+    <color name="key_ok_color">#ff5963</color>
+    <color name="key_nopress">#5a5a5a</color>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/image_view"
+        android:layout_width="43dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="摔跤吧！爸爸"
+        android:textColor="#323232"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/count"
+        android:layout_alignBottom="@+id/count"
+        android:layout_alignLeft="@+id/detail"
+        android:layout_alignStart="@+id/detail" />
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@id/image_view"
+        android:text="为圆摔跤梦 女儿不心疼"
+        android:textColor="#6e6e6e"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_below="@id/detail"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@id/image_view"
+        android:text="万达影院"
+        android:textColor="#aaaaaa"
+        android:textSize="12sp" />
+
+    <TextView
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:id="@+id/count"
+        android:text="9.5"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
