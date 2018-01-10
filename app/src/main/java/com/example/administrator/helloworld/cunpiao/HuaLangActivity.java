@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.administrator.helloworld.R;
@@ -18,12 +19,13 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/6/2.
+ * @author chenhao
  */
 
 public class HuaLangActivity extends BaseActivity {
 
     @BindView(R.id.viewpager)
-    ViewPager mViewPager;
+    ClipViewPager mViewPager;
     @BindView(R.id.container)
     LinearLayout ll;
     private int mScreenWidth;
@@ -44,6 +46,8 @@ public class HuaLangActivity extends BaseActivity {
     protected void init() {
         for (int i = 0; i < 8; i++) {
             View view = LayoutInflater.from(this).inflate(R.layout.hualang_item_viewpager_layout, null);
+//            ImageView imageView = new ImageView(this);
+//            imageView.setImageResource(R.mipmap.timg);
             viewlist.add(view);
         }
         //屏幕宽度
@@ -51,7 +55,7 @@ public class HuaLangActivity extends BaseActivity {
         //设置缓存数量
         mViewPager.setOffscreenPageLimit(8);
         //设置间距
-        mViewPager.setPageMargin(15);
+        mViewPager.setPageMargin(50);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 mScreenWidth / 5, ViewPager.LayoutParams.WRAP_CONTENT);
         mViewPager.setLayoutParams(params);
@@ -62,21 +66,6 @@ public class HuaLangActivity extends BaseActivity {
         mViewPager.setCurrentItem(0);
 
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
 
         //监听每个页面的点击，将事件分发给viewpager
         ll.setOnTouchListener(new View.OnTouchListener() {
