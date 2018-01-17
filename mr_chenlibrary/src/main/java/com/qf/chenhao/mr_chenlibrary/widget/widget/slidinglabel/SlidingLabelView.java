@@ -14,7 +14,7 @@ import android.view.View;
  */
 public class SlidingLabelView extends View {
     //画的内容
-    private String[] labels = {"热门","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    private String[] labels = {"热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private Paint unCheckedPaint;
     private Paint CheckedPaint;
     private int index = -1;//表示被选中的字母下标
@@ -30,11 +30,11 @@ public class SlidingLabelView extends View {
     }
 
     public SlidingLabelView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public SlidingLabelView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public SlidingLabelView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -59,17 +59,17 @@ public class SlidingLabelView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         int width = getWidth();//控件高度
-        for (int i = 0; i <labels.length ; i++) {
-            if (i == index){//被选中的字母
+        for (int i = 0; i < labels.length; i++) {
+            if (i == index) {//被选中的字母
 
                 canvas.drawText(labels[i],
-                        width/2-CheckedPaint.measureText(labels[i])/2,
-                        (CheckedPaint.descent()-CheckedPaint.ascent())*(i+1),
+                        width / 2 - CheckedPaint.measureText(labels[i]) / 2,
+                        (CheckedPaint.descent() - CheckedPaint.ascent()) * (i + 1),
                         CheckedPaint);
-            }else{
+            } else {
                 canvas.drawText(labels[i],
-                        width/2 - unCheckedPaint.measureText(labels[i])/2,
-                        (unCheckedPaint.descent() - unCheckedPaint.ascent())*(i+1),
+                        width / 2 - unCheckedPaint.measureText(labels[i]) / 2,
+                        (unCheckedPaint.descent() - unCheckedPaint.ascent()) * (i + 1),
                         unCheckedPaint);
             }
         }
@@ -80,28 +80,29 @@ public class SlidingLabelView extends View {
         int width = getMeasureSize(widthMeasureSpec, 0);
         int height = getMeasureSize(heightMeasureSpec, 1);
         //保存测量高度
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
     }
 
     /**
-     *对宽高进行测量的方法
+     * 对宽高进行测量的方法
+     *
      * @param spec 高度或者宽度的空间值
-     * @param type  0 - 宽度 1 - 高度
+     * @param type 0 - 宽度 1 - 高度
      */
     private int getMeasureSize(int spec, int type) {
         int mode = MeasureSpec.getMode(spec);
         int size = MeasureSpec.getSize(type);
-        switch (mode){
+        switch (mode) {
             case MeasureSpec.EXACTLY:
                 return size;
             case MeasureSpec.AT_MOST:
-                switch (type){
+                switch (type) {
                     case 0:
                         //测量宽度
-                        return (int) (unCheckedPaint.measureText(labels[0])+getPaddingLeft()+getPaddingRight());
+                        return (int) (unCheckedPaint.measureText(labels[0]) + getPaddingLeft() + getPaddingRight());
                     case 1:
                         //测量高度
-                        return (int) (((unCheckedPaint.descent() - unCheckedPaint.ascent())*labels.length)+getPaddingTop()+getPaddingBottom());
+                        return (int) (((unCheckedPaint.descent() - unCheckedPaint.ascent()) * labels.length) + getPaddingTop() + getPaddingBottom());
                 }
                 break;
             case MeasureSpec.UNSPECIFIED:
@@ -112,12 +113,13 @@ public class SlidingLabelView extends View {
 
     /**
      * 事件处理方法
+     *
      * @param event
      * @return
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
                 touch(event);
@@ -126,7 +128,7 @@ public class SlidingLabelView extends View {
                 index = -1;
                 invalidate();
                 //抬起手指回调方法
-                if (onSelectorListener!= null){
+                if (onSelectorListener != null) {
                     onSelectorListener.eventUp();
                 }
                 break;
@@ -137,25 +139,26 @@ public class SlidingLabelView extends View {
     private void touch(MotionEvent event) {
         int clickY = (int) event.getY();
         //获取当前点击字母的下标
-        int index = (int) (clickY/(unCheckedPaint.descent()-unCheckedPaint.ascent()));
+        int index = (int) (clickY / (unCheckedPaint.descent() - unCheckedPaint.ascent()));
 
-        if(index<0){
+        if (index < 0) {
             index = 0;
         }
-        if (index >=labels.length){
+        if (index >= labels.length) {
             index = labels.length - 1;
         }
 
         this.index = index;
         //重绘
         invalidate();
-        if (onSelectorListener != null){
-            onSelectorListener.selector(labels[index],index);
+        if (onSelectorListener != null) {
+            onSelectorListener.selector(labels[index], index);
         }
     }
 
-    public interface OnSelectorListener{
+    public interface OnSelectorListener {
         void selector(String text, int position);
+
         void eventUp();
     }
 }

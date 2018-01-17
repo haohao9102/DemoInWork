@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.administrator.helloworld.R;
@@ -19,6 +18,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/6/2.
+ *
  * @author chenhao
  */
 
@@ -46,8 +46,6 @@ public class HuaLangActivity extends BaseActivity {
     protected void init() {
         for (int i = 0; i < 8; i++) {
             View view = LayoutInflater.from(this).inflate(R.layout.hualang_item_viewpager_layout, null);
-//            ImageView imageView = new ImageView(this);
-//            imageView.setImageResource(R.mipmap.timg);
             viewlist.add(view);
         }
         //屏幕宽度
@@ -64,7 +62,6 @@ public class HuaLangActivity extends BaseActivity {
         mViewPager.setAdapter(adapter);
         mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setCurrentItem(0);
-
 
 
         //监听每个页面的点击，将事件分发给viewpager
